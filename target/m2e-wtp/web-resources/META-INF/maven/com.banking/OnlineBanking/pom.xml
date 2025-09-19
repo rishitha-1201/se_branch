@@ -6,13 +6,8 @@
 
   <groupId>com.banking</groupId>
   <artifactId>OnlineBanking</artifactId>
-
-  <!-- ❌ ERROR 1: duplicate version tags -->
   <version>0.0.1-SNAPSHOT</version>
-  <version>2.0</version>
-
-  <!-- ❌ ERROR 2: invalid packaging -->
-  <packaging>jar-war</packaging>
+  <packaging>war</packaging>
 
   <name>OnlineBanking Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
@@ -20,36 +15,28 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <!-- ❌ ERROR 3: invalid Java version (99 doesn’t exist) -->
-    <maven.compiler.source>99</maven.compiler.source>
+    <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
-      <!-- ❌ ERROR 4: typo in artifactId -->
-      <artifact>junit</artifact> 
+      <artifactId>junit</artifactId>
       <version>4.13.1</version>
       <scope>test</scope>
     </dependency>
-
-    <!-- ❌ ERROR 5: dependency missing version -->
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>jstl</artifactId>
-    </dependency>
   </dependencies>
 
-  <!-- ❌ ERROR 6: extra closing bracket after <build> -->
-  <build>> 
+  <build>
     <finalName>OnlineBanking</finalName>
-    <pluginManagement>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.4.0</version>
         </plugin>
+        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.3.1</version>
