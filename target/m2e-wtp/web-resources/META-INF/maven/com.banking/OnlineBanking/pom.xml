@@ -23,8 +23,8 @@
     <maven-clean-plugin-goals>ba</maven-clean-plugin-goals>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- ❌ ERROR 3: invalid Java version (99 doesn’t exist) -->
-    <maven.compiler.source>17</maven.compiler.source>
-    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
   </properties>
 
   <dependencies>
