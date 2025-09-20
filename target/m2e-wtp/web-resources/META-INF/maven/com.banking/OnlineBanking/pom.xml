@@ -2,11 +2,17 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  
   <modelVersion>4.0.0</modelVersion>
-
   <groupId>com.banking</groupId>
   <artifactId>OnlineBanking</artifactId>
+  
+
+  <!-- ❌ ERROR 1: duplicate version tags -->
   <version>0.0.1-SNAPSHOT</version>
+
+  <!-- ❌ ERROR 2: invalid packaging -->
   <packaging>war</packaging>
 
   <name>OnlineBanking Maven Webapp</name>
@@ -14,29 +20,40 @@
   <url>http://www.example.com</url>
 
   <properties>
+    <maven-clean-plugin-goals>ba</maven-clean-plugin-goals>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>8</maven.compiler.source>
-    <maven.compiler.target>8</maven.compiler.target>
+    <!-- ❌ ERROR 3: invalid Java version (99 doesn’t exist) -->
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
+      <!-- ❌ ERROR 4: typo in artifactId -->
       <artifactId>junit</artifactId>
       <version>4.13.1</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- ❌ ERROR 5: dependency missing version -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
 
+  <!-- ❌ ERROR 6: extra closing bracket after <build> -->
   <build>
     <finalName>OnlineBanking</finalName>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+    <pluginManagement>
       <plugins>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.4.0</version>
         </plugin>
-        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.3.1</version>
@@ -63,5 +80,5 @@
         </plugin>
       </plugins>
     </pluginManagement>
-  </build>
+     </build>
 </project>
